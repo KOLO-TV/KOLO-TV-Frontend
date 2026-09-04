@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a192f"/>
+      <stop offset="100%" stop-color="#0022e3"/>
+    </linearGradient>
+    <pattern id="dots" width="16" height="16" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="1" fill="white" opacity="0.08"/>
+    </pattern>
+  </defs>
+  <rect width="400" height="300" fill="url(#g)"/>
+  <rect width="400" height="300" fill="url(#dots)"/>
+  <rect x="150" y="120" width="100" height="70" rx="8" fill="white" opacity="0.15"/><rect x="180" y="195" width="40" height="8" rx="4" fill="white" opacity="0.15"/>
+  <text x="200" y="230" font-family="Arial, sans-serif" font-size="22" font-weight="900" fill="white" text-anchor="middle" letter-spacing="1">KOLO TV</text>
+  <text x="200" y="252" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="white" fill-opacity="0.75" text-anchor="middle" letter-spacing="2">STUDIO — NY VAOVAO</text>
+</svg>
