@@ -10,7 +10,6 @@ export default function Home() {
     <SiteLayout>
       {/* Hero */}
       <section className="relative overflow-hidden bg-kolo-navy text-white">
-        <div className="kolo-pattern absolute inset-0 opacity-40" />
         <div className="mx-auto grid max-w-7xl gap-8 px-4 py-10 lg:grid-cols-[1.1fr_1fr] lg:gap-14 lg:px-8 lg:py-16">
           <div className="fade-up flex flex-col justify-center">
             <div className="mb-4 flex items-center gap-2">
@@ -135,7 +134,6 @@ export default function Home() {
 
       <section className="mx-auto max-w-7xl px-4 lg:px-8">
         <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-kolo-navy via-kolo-navy to-kolo-blue p-8 text-white sm:p-12">
-          <div className="kolo-pattern absolute inset-0 opacity-30" />
           <div className="relative grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
             <div>
               <span className="inline-flex items-center gap-2 rounded-full bg-kolo-live px-3 py-1 text-[11px] font-bold uppercase tracking-widest">

@@ -45,11 +45,6 @@ h1, h2, h3, h4, h5 {
   to { transform: scaleY(1); }
 }
 
-.kolo-pattern {
-  background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.18) 1px, transparent 0);
-  background-size: 22px 22px;
-}
-
 /* thin scrollbar for chat/lists */
 .thin-scroll::-webkit-scrollbar {
   width: 6px;

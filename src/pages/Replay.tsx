@@ -21,7 +21,6 @@ export default function Replay() {
   return (
     <SiteLayout>
       <section className="relative overflow-hidden bg-kolo-blue text-white">
-        <div className="kolo-pattern absolute inset-0 opacity-40" />
         <div className="relative mx-auto max-w-7xl px-4 py-14 lg:px-8">
           <span className="text-xs font-bold uppercase tracking-widest text-kolo-orange">
             Vidéothèque
