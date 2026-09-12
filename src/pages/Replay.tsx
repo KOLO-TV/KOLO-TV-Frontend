@@ -55,7 +55,7 @@ export default function Replay() {
                 onClick={() => setActiveCategory(cat)}
                 className={`shrink-0 rounded-full px-4 py-2 text-sm font-bold transition-all ${
                   activeCategory === cat
-                    ? 'bg-kolo-blue text-white shadow-[0_6px_20px_-6px_rgba(0,34,227,0.6)]'
+                    ? 'bg-kolo-blue text-white shadow-[0_6px_20px_-6px_rgba(62,80,158,0.6)]'
                     : 'border border-slate-200 bg-slate-100 text-slate-600 hover:border-kolo-blue hover:text-kolo-blue'
                 }`}
               >

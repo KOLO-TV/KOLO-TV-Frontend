@@ -5,7 +5,7 @@ export default function NotFound() {
   return (
     <SiteLayout>
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-center px-4 py-24 text-center">
-        <span className="font-display text-6xl font-black text-kolo-blue">404</span>
+        <span className="font-sans text-6xl font-black text-kolo-blue">404</span>
         <h1 className="mt-4 font-display text-2xl font-black">Page introuvable</h1>
         <p className="mt-2 max-w-md text-slate-500">
           La page que vous recherchez n'existe pas ou a été déplacée.

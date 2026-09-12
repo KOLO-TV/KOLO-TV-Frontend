@@ -41,11 +41,11 @@ export default function Header() {
     <header className="sticky top-0 z-50 w-full bg-kolo-navy text-white">
       <div className="mx-auto flex h-[70px] max-w-7xl items-center gap-6 px-4 lg:px-8">
         <Link to="/" className="flex shrink-0 items-center gap-3">
-          <div className="flex h-9 items-center justify-center rounded-md bg-kolo-blue px-2.5">
+          <div className="flex items-center gap-1.5">
             <span className="font-display text-lg font-black tracking-tight text-white">
               KOLO
             </span>
-            <span className="ml-1 rounded-sm bg-kolo-orange px-1 text-[9px] font-black text-white">
+            <span className="rounded-md bg-white px-1.5 py-0.5 text-[10px] font-black text-kolo-blue">
               TV
             </span>
           </div>

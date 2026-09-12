@@ -22,7 +22,7 @@ export default function Footer() {
             <div className="flex items-center gap-2">
               <div className="flex h-11 items-center rounded-lg bg-white px-3">
                 <span className="font-display text-xl font-black text-kolo-blue">KOLO</span>
-                <span className="ml-1 rounded-sm bg-kolo-orange px-1 py-0.5 text-[10px] font-black text-white">
+                <span className="ml-1 rounded-sm bg-kolo-blue px-1 py-0.5 text-[10px] font-black text-white">
                   TV
                 </span>
               </div>
