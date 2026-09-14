@@ -47,12 +47,12 @@ export default function Home() {
             </div>
             <div className="mt-8 flex items-center gap-6 text-xs text-white/70">
               <div>
-                <div className="font-display text-2xl font-black text-white">150K+</div>
+                <div className="font-sans text-2xl font-black text-white">150K+</div>
                 <div>Téléspectateurs</div>
               </div>
               <div className="h-8 w-px bg-white/20" />
               <div>
-                <div className="font-display text-2xl font-black text-white">24/7</div>
+                <div className="font-sans text-2xl font-black text-white">24/7</div>
                 <div>En direct</div>
               </div>
               <div className="h-8 w-px bg-white/20" />
@@ -216,7 +216,7 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section title="KOLO FM" subtitle="La radio culturelle malgache">
+      <Section title="KOLO FM" subtitle="La radio active !">
         <div className="grid gap-6 overflow-hidden rounded-3xl bg-white lg:grid-cols-2">
           <div className="relative aspect-video lg:aspect-auto">
             <img

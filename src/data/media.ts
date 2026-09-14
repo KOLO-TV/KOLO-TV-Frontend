@@ -70,8 +70,8 @@ export type Show = {
 export const shows: Show[] = [
   { title: `Ny Vaovao`, desc: `Le journal quotidien en malagasy et en français`, image: showVaovao, gradient: 'from-kolo-blue to-kolo-blue-deep' },
   { title: `Kolo Kulture`, desc: `Le magazine culturel malgache`, image: showCulture, gradient: 'from-kolo-orange to-kolo-orange-hot' },
-  { title: `Zoom Sport`, desc: `Toute l'actualité sportive de la Grande Île`, image: showSport, gradient: 'from-kolo-green to-emerald-700' },
-  { title: `Sessions Live`, desc: `Concerts et rencontres avec les artistes`, image: showMusic, gradient: 'from-fuchsia-600 to-kolo-orange' },
+  { title: `Zoom Sport`, desc: `Toute l'actualité sportive de la Grande Île`, image: showSport, gradient: 'from-kolo-green to-kolo-purple' },
+  { title: `Sessions Live`, desc: `Concerts et rencontres avec les artistes`, image: showMusic, gradient: 'from-kolo-purple to-kolo-orange' },
 ]
 
 export const episodesList = [
@@ -91,11 +91,11 @@ export const relatedEpisodes: MediaItem[] = [
 ]
 
 export const initialChatMessages = [
-  { user: `Hery R.`, color: `#0022e3`, msg: `Salama daholo ! Excellent journal ce soir 🇲🇬`, time: `20:12` },
-  { user: `Nirina`, color: `#f2762e`, msg: `Le reportage sur Toamasina était très bien fait 👏`, time: `20:14` },
-  { user: `Fara M.`, color: `#3aa66b`, msg: `Misaotra KOLO TV pour la qualité !`, time: `20:15` },
-  { user: `Tahiana`, color: `#0022e3`, msg: `Vous diffusez le match des Barea demain ?`, time: `20:17` },
-  { user: `Rojo`, color: `#f2762e`, msg: `Tsara be ny fandaharana e 💛`, time: `20:19` },
+  { user: `Hery R.`, color: `#3E509E`, msg: `Salama daholo ! Excellent journal ce soir 🇲🇬`, time: `20:12` },
+  { user: `Nirina`, color: `#7D3B8F`, msg: `Le reportage sur Toamasina était très bien fait 👏`, time: `20:14` },
+  { user: `Fara M.`, color: `#1D71B8`, msg: `Misaotra KOLO TV pour la qualité !`, time: `20:15` },
+  { user: `Tahiana`, color: `#3E509E`, msg: `Vous diffusez le match des Barea demain ?`, time: `20:17` },
+  { user: `Rojo`, color: `#7D3B8F`, msg: `Tsara be ny fandaharana e 💛`, time: `20:19` },
 ]
 
 export const searchSuggestions = [

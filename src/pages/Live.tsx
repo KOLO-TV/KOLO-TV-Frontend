@@ -20,7 +20,7 @@ export default function Live() {
       ...prev,
       {
         user: 'Vous',
-        color: '#0022e3',
+        color: '#3E509E',
         msg: draft.trim(),
         time: new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }),
       },
