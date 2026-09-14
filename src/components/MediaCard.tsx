@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { Play } from 'lucide-react'
 import type { MediaItem } from '../data/media'
+import { useLanguage } from '../i18n/LanguageContext'
 
 type Props = MediaItem & {
   to?: string
@@ -8,7 +9,7 @@ type Props = MediaItem & {
 }
 
 export default function MediaCard({
-  title,
+  titleKey,
   category,
   duration,
   image,
@@ -17,6 +18,8 @@ export default function MediaCard({
   to = '/emissions/ny-vaovao',
   size = 'md',
 }: Props) {
+  const { t } = useLanguage()
+  const title = t(titleKey)
   return (
     <Link
       to={to}
@@ -36,12 +39,12 @@ export default function MediaCard({
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0" />
         <div className="absolute left-3 top-3 flex gap-2">
           <span className="rounded-md bg-kolo-blue px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-white">
-            {category}
+            {t(`category.${category}`)}
           </span>
           {live && (
             <span className="relative flex items-center gap-1 rounded-md bg-kolo-live px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-white">
               <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-white" />
-              Live
+              {t('common.liveBadge')}
             </span>
           )}
         </div>
@@ -58,7 +61,7 @@ export default function MediaCard({
         <h3 className="line-clamp-2 font-display font-bold leading-tight text-slate-900 transition-colors group-hover:text-kolo-blue">
           {title}
         </h3>
-        {time && <p className="mt-1.5 text-xs text-slate-500">{time}</p>}
+        {time && <p className="mt-1.5 text-xs text-slate-500">{t(time.key, time.params)}</p>}
       </div>
     </Link>
   )

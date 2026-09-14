@@ -4,8 +4,10 @@ import SiteLayout from '../layouts/SiteLayout'
 import Section from '../components/Section'
 import MediaCard from '../components/MediaCard'
 import { featured, journals, shows, images } from '../data/media'
+import { useLanguage } from '../i18n/LanguageContext'
 
 export default function Home() {
+  const { t } = useLanguage()
   return (
     <SiteLayout>
       {/* Hero */}
@@ -15,20 +17,19 @@ export default function Home() {
             <div className="mb-4 flex items-center gap-2">
               <span className="relative flex items-center gap-2 rounded-full bg-kolo-live px-3 py-1 text-[11px] font-bold uppercase tracking-widest">
                 <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-white" />
-                En direct
+                {t('common.direct')}
               </span>
               <span className="text-xs font-medium uppercase tracking-widest text-white/70">
-                Ny Vaovao · Aujourd'hui · 20h00
+                Ny Vaovao · {t('time.todayEvening')}
               </span>
             </div>
             <h1 className="font-display text-4xl font-black leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
-              La télé <span className="text-kolo-orange">autrement</span>…
+              {t('home.hero.titleLead')} <span className="text-kolo-orange">{t('home.hero.titleAccent')}</span>…
               <br />
-              <span className="text-white/95">Toujours pour vous.</span>
+              <span className="text-white/95">{t('home.hero.titleLine2')}</span>
             </h1>
             <p className="mt-5 max-w-lg text-base text-white/85 lg:text-lg">
-              Suivez le Journal, les magazines et le sport de la Grande Île. Une chaîne
-              malgache proche du public, culturelle et informative.
+              {t('home.hero.intro')}
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
@@ -36,29 +37,29 @@ export default function Home() {
                 className="inline-flex items-center gap-2 rounded-full bg-kolo-orange px-6 py-3.5 text-sm font-bold text-white shadow-glow-orange transition-all hover:scale-105 hover:bg-kolo-orange-hot"
               >
                 <Play className="h-4 w-4 fill-current" />
-                Regarder maintenant
+                {t('home.hero.watchNow')}
               </Link>
               <Link
                 to="/replay"
                 className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/5 px-6 py-3.5 text-sm font-semibold backdrop-blur transition-colors hover:bg-white/10"
               >
-                Voir le Replay <ChevronRight className="h-4 w-4" />
+                {t('home.hero.seeReplay')} <ChevronRight className="h-4 w-4" />
               </Link>
             </div>
             <div className="mt-8 flex items-center gap-6 text-xs text-white/70">
               <div>
                 <div className="font-sans text-2xl font-black text-white">150K+</div>
-                <div>Téléspectateurs</div>
+                <div>{t('home.hero.viewers')}</div>
               </div>
               <div className="h-8 w-px bg-white/20" />
               <div>
                 <div className="font-sans text-2xl font-black text-white">24/7</div>
-                <div>En direct</div>
+                <div>{t('common.direct')}</div>
               </div>
               <div className="h-8 w-px bg-white/20" />
               <div>
                 <div className="font-display text-2xl font-black text-white">FR / MG</div>
-                <div>Bilingue</div>
+                <div>{t('home.hero.bilingual')}</div>
               </div>
             </div>
           </div>
@@ -67,13 +68,13 @@ export default function Home() {
             <div className="relative aspect-video overflow-hidden rounded-2xl border border-white/10 shadow-2xl">
               <img
                 src={images.heroStudio}
-                alt="Journal en direct"
+                alt={t('home.hero.imageAlt')}
                 className="h-full w-full object-cover"
                 width={1600}
                 height={900}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
-              <button aria-label="Lire la vidéo" className="absolute inset-0 grid place-items-center">
+              <button aria-label={t('player.playVideo')} className="absolute inset-0 grid place-items-center">
                 <span className="grid h-20 w-20 place-items-center rounded-full bg-kolo-orange text-white shadow-glow-orange transition-transform hover:scale-110">
                   <Play className="h-8 w-8 fill-current" />
                 </span>
@@ -81,12 +82,12 @@ export default function Home() {
               <div className="absolute inset-x-0 bottom-0 p-5">
                 <div className="mb-2 flex items-center gap-2">
                   <span className="rounded-md bg-kolo-live px-2 py-1 text-[10px] font-bold uppercase tracking-widest">
-                    Live
+                    {t('common.liveBadge')}
                   </span>
                   <span className="text-xs font-semibold text-white/80">KOLO TV</span>
                 </div>
                 <h3 className="font-display text-lg font-bold sm:text-xl">
-                  NY VAOVAO — Aujourd'hui, l'actualité de Madagascar
+                  {t('home.hero.videoTitle')}
                 </h3>
               </div>
             </div>
@@ -97,7 +98,7 @@ export default function Home() {
               </div>
               <div className="leading-tight">
                 <div className="text-[10px] font-bold uppercase tracking-widest text-slate-500">
-                  On air
+                  {t('common.onAir')}
                 </div>
                 <div className="text-sm font-bold">KOLO FM — Mankasitraka</div>
               </div>
@@ -107,13 +108,13 @@ export default function Home() {
       </section>
 
       <Section
-        title="À la une"
-        subtitle="Les temps forts sélectionnés par la rédaction"
+        title={t('home.featured.title')}
+        subtitle={t('home.featured.subtitle')}
         icon={<TrendingUp className="h-5 w-5" />}
       >
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {featured.map((item, i) => (
-            <div key={item.title} style={{ animationDelay: `${i * 80}ms` }} className="fade-up">
+            <div key={item.titleKey} style={{ animationDelay: `${i * 80}ms` }} className="fade-up">
               <MediaCard {...item} size="lg" />
             </div>
           ))}
@@ -121,13 +122,13 @@ export default function Home() {
       </Section>
 
       <Section
-        title="Ny Vaovao & Journaux"
-        subtitle="Les dernières éditions"
-        cta={{ label: 'Tout voir', to: '/replay' }}
+        title={t('home.journals.title')}
+        subtitle={t('home.journals.subtitle')}
+        cta={{ label: t('home.journals.cta'), to: '/replay' }}
       >
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {journals.slice(0, 8).map((item) => (
-            <MediaCard key={item.title} {...item} />
+            <MediaCard key={item.titleKey} {...item} />
           ))}
         </div>
       </Section>
@@ -138,16 +139,15 @@ export default function Home() {
             <div>
               <span className="inline-flex items-center gap-2 rounded-full bg-kolo-live px-3 py-1 text-[11px] font-bold uppercase tracking-widest">
                 <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-white" />
-                En direct maintenant
+                {t('home.promo.badge')}
               </span>
               <h2 className="mt-4 font-display text-3xl font-black leading-tight sm:text-4xl">
                 KOLO TV & KOLO FM
                 <br />
-                <span className="text-kolo-orange">tous les jours, sans coupure</span>
+                <span className="text-kolo-orange">{t('home.promo.titleAccent')}</span>
               </h2>
               <p className="mt-3 max-w-xl text-white/80">
-                Regardez la chaîne en direct sur mobile ou desktop, écoutez la radio et
-                rejoignez le chat de la communauté KOLO.
+                {t('home.promo.text')}
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
@@ -155,23 +155,23 @@ export default function Home() {
                 to="/live"
                 className="inline-flex items-center gap-2 rounded-full bg-kolo-orange px-6 py-3.5 text-sm font-bold shadow-glow-orange transition-all hover:scale-105 hover:bg-kolo-orange-hot"
               >
-                <Play className="h-4 w-4 fill-current" /> Regarder TV
+                <Play className="h-4 w-4 fill-current" /> {t('home.promo.watchTv')}
               </Link>
               <Link
                 to="/live"
                 className="inline-flex items-center gap-2 rounded-full bg-kolo-green px-6 py-3.5 text-sm font-bold transition-all hover:scale-105"
               >
-                <Radio className="h-4 w-4" /> Écouter FM
+                <Radio className="h-4 w-4" /> {t('home.promo.listenFm')}
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      <Section title="Populaire cette semaine" subtitle="Ce que la communauté KOLO regarde le plus">
+      <Section title={t('home.popular.title')} subtitle={t('home.popular.subtitle')}>
         <div className="-mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-3 lg:-mx-8 lg:px-8">
           {journals.map((item, i) => (
-            <div key={item.title} className="w-72 shrink-0 snap-start sm:w-80">
+            <div key={item.titleKey} className="w-72 shrink-0 snap-start sm:w-80">
               <MediaCard {...item} />
               <div className="mt-2 flex items-center gap-2 px-1 text-xs text-slate-500">
                 <span className="font-display text-lg font-black text-kolo-orange">
@@ -185,9 +185,9 @@ export default function Home() {
       </Section>
 
       <Section
-        title="Nos émissions"
-        subtitle="Une programmation pensée pour vous"
-        cta={{ label: 'Toute la grille', to: '/replay' }}
+        title={t('home.shows.title')}
+        subtitle={t('home.shows.subtitle')}
+        cta={{ label: t('home.shows.cta'), to: '/replay' }}
       >
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {shows.map((show) => (
@@ -206,9 +206,9 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
               <div className="relative p-5 text-white">
                 <h3 className="font-display text-xl font-black">{show.title}</h3>
-                <p className="mt-1 text-sm text-white/85">{show.desc}</p>
+                <p className="mt-1 text-sm text-white/85">{t(show.descKey)}</p>
                 <div className="mt-3 inline-flex items-center gap-1.5 text-xs font-bold text-kolo-orange">
-                  Voir les épisodes <ChevronRight className="h-3.5 w-3.5" />
+                  {t('home.shows.seeEpisodes')} <ChevronRight className="h-3.5 w-3.5" />
                 </div>
               </div>
             </Link>
@@ -216,12 +216,12 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section title="KOLO FM" subtitle="La radio active !">
+      <Section title="KOLO FM" subtitle={t('home.radio.subtitle')}>
         <div className="grid gap-6 overflow-hidden rounded-3xl bg-white lg:grid-cols-2">
           <div className="relative aspect-video lg:aspect-auto">
             <img
               src={images.showRadio}
-              alt="Studio KOLO FM"
+              alt={t('home.radio.imageAlt')}
               loading="lazy"
               className="absolute inset-0 h-full w-full object-cover"
             />
@@ -229,21 +229,20 @@ export default function Home() {
           <div className="flex flex-col justify-center gap-5 p-8 lg:p-12">
             <div className="flex items-center gap-2 text-kolo-orange">
               <Radio className="h-5 w-5" />
-              <span className="text-xs font-bold uppercase tracking-widest">On air · 24/7</span>
+              <span className="text-xs font-bold uppercase tracking-widest">{t('common.onAir')} · 24/7</span>
             </div>
             <h3 className="font-display text-3xl font-black leading-tight">
-              La musique et les voix de Madagascar, non-stop.
+              {t('home.radio.title')}
             </h3>
             <p className="text-slate-600">
-              Écoutez KOLO FM directement dans votre navigateur, sur mobile ou en podcast.
-              Émissions culturelles, débats, musique malgache et internationale.
+              {t('home.radio.text')}
             </p>
             <div>
               <Link
                 to="/live"
                 className="inline-flex items-center gap-2 rounded-full bg-kolo-blue px-6 py-3.5 text-sm font-bold text-white transition-all hover:scale-105 hover:bg-kolo-blue-deep"
               >
-                <Play className="h-4 w-4 fill-current" /> Écouter en direct
+                <Play className="h-4 w-4 fill-current" /> {t('home.radio.listenLive')}
               </Link>
             </div>
           </div>
