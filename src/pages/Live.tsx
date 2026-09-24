@@ -1,17 +1,23 @@
 import { useState, type FormEvent } from 'react'
 import { Play, Radio, Send, Tv, Users, Volume2 } from 'lucide-react'
 import SiteLayout from '../layouts/SiteLayout'
-import { images, initialChatMessages } from '../data/media'
+import { images, initialChatMessages, type ChatMessage } from '../data/media'
+import { useLanguage } from '../i18n/LanguageContext'
 
 type Channel = 'tv' | 'fm'
-type ChatMsg = { user: string; color: string; msg: string; time: string }
+// Messages mock (traduits) ou envoyés par l'utilisateur (texte saisi, affiché tel quel).
+type ChatMsg = ChatMessage | { own: true; color: string; msg: string; time: string }
 
 const BAR_HEIGHTS = [8, 16, 24, 12, 20, 30, 14, 22, 10]
 
 export default function Live() {
+  const { t } = useLanguage()
   const [channel, setChannel] = useState<Channel>('tv')
   const [messages, setMessages] = useState<ChatMsg[]>(initialChatMessages)
   const [draft, setDraft] = useState('')
+
+  const authorOf = (m: ChatMsg) => ('own' in m ? t('live.chat.you') : m.user)
+  const textOf = (m: ChatMsg) => ('own' in m ? m.msg : t(m.msgKey))
 
   const handleSend = (e: FormEvent) => {
     e.preventDefault()
@@ -19,7 +25,7 @@ export default function Live() {
     setMessages((prev) => [
       ...prev,
       {
-        user: 'Vous',
+        own: true,
         color: '#3E509E',
         msg: draft.trim(),
         time: new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }),
@@ -35,13 +41,13 @@ export default function Live() {
           <div>
             <div className="flex items-center gap-2 text-kolo-orange">
               <span className="relative flex items-center gap-2 rounded-full bg-kolo-live px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-white">
-                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-white" /> Live
+                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-white" /> {t('common.liveBadge')}
               </span>
               <span className="flex items-center gap-1 text-xs font-semibold">
-                <Users className="h-3.5 w-3.5" /> 2 314 spectateurs
+                <Users className="h-3.5 w-3.5" /> {t('common.viewers', { count: '2 314' })}
               </span>
             </div>
-            <h1 className="mt-2 font-display text-3xl font-black sm:text-4xl">KOLO en direct</h1>
+            <h1 className="mt-2 font-display text-3xl font-black sm:text-4xl">{t('live.title')}</h1>
           </div>
 
           <div className="flex rounded-full border border-slate-200 bg-white p-1">
@@ -69,7 +75,7 @@ export default function Live() {
             <div className="relative aspect-video overflow-hidden rounded-2xl bg-black shadow-card-hover">
               {channel === 'tv' ? (
                 <>
-                  <img src={images.heroStudio} alt="KOLO TV en direct" className="h-full w-full object-cover" />
+                  <img src={images.heroStudio} alt={t('live.tvImageAlt')} className="h-full w-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
                 </>
               ) : (
@@ -80,12 +86,12 @@ export default function Live() {
                       <span className="absolute inset-0 animate-ping rounded-full bg-kolo-orange opacity-40" />
                     </div>
                     <p className="mt-6 text-xs font-bold uppercase tracking-widest text-white/70">
-                      On air
+                      {t('common.onAir')}
                     </p>
                     <h2 className="mt-2 font-display text-2xl font-black">
-                      Mankasitraka — matinale
+                      {t('live.fmShow')}
                     </h2>
-                    <p className="mt-1 text-sm text-white/80">avec Nirina Rakoto · 06h – 09h</p>
+                    <p className="mt-1 text-sm text-white/80">{t('live.fmHost')}</p>
                     <div className="mt-6 flex items-end justify-center gap-1">
                       {BAR_HEIGHTS.map((h, i) => (
                         <span
@@ -104,7 +110,7 @@ export default function Live() {
 
               <div className="absolute left-4 top-4 flex gap-2">
                 <span className="rounded-md bg-kolo-live px-2 py-1 text-[10px] font-bold uppercase tracking-widest text-white">
-                  Live
+                  {t('common.liveBadge')}
                 </span>
                 <span className="rounded-md bg-black/60 px-2 py-1 text-[10px] font-bold uppercase tracking-widest text-white backdrop-blur">
                   {channel === 'tv' ? 'KOLO TV · Ny Vaovao' : 'KOLO FM · 99.5 MHz'}
@@ -112,7 +118,7 @@ export default function Live() {
               </div>
 
               {channel === 'tv' && (
-                <button className="absolute inset-0 grid place-items-center" aria-label="Lecture">
+                <button className="absolute inset-0 grid place-items-center" aria-label={t('player.play')}>
                   <span className="grid h-20 w-20 place-items-center rounded-full bg-kolo-orange text-white shadow-glow-orange transition-transform hover:scale-110">
                     <Play className="h-8 w-8 fill-current" />
                   </span>
@@ -121,7 +127,7 @@ export default function Live() {
 
               <div className="absolute inset-x-0 bottom-0 p-4">
                 <div className="flex items-center gap-3 text-white">
-                  <button aria-label="Play">
+                  <button aria-label={t('player.playShort')}>
                     <Play className="h-5 w-5 fill-current" />
                   </button>
                   <Volume2 className="h-5 w-5" />
@@ -139,24 +145,24 @@ export default function Live() {
             <div className="mt-5 grid gap-3 sm:grid-cols-2">
               <div className="rounded-2xl border border-slate-200 bg-white p-4">
                 <div className="text-[11px] font-bold uppercase tracking-widest text-kolo-orange">
-                  Maintenant
+                  {t('live.now')}
                 </div>
                 <div className="mt-1 font-display text-lg font-black">
-                  {channel === 'tv' ? 'Ny Vaovao — Journal 20h' : 'Mankasitraka — matinale'}
+                  {channel === 'tv' ? t('live.tvNowTitle') : t('live.fmShow')}
                 </div>
                 <div className="text-xs text-slate-500">
-                  {channel === 'tv' ? '20:00 – 20:30 · Journal télévisé' : '06:00 – 09:00 · Talk & musique'}
+                  {channel === 'tv' ? t('live.tvNowSlot') : t('live.fmNowSlot')}
                 </div>
               </div>
               <div className="rounded-2xl border border-dashed border-slate-300 bg-slate-100/60 p-4">
                 <div className="text-[11px] font-bold uppercase tracking-widest text-slate-500">
-                  Ensuite
+                  {t('live.next')}
                 </div>
                 <div className="mt-1 font-display text-lg font-black">
                   {channel === 'tv' ? 'Kolo Kulture' : 'Malagasy Beats'}
                 </div>
                 <div className="text-xs text-slate-500">
-                  {channel === 'tv' ? '20:30 – 21:15 · Magazine culturel' : '09:00 – 11:00 · Sélection musicale'}
+                  {channel === 'tv' ? t('live.tvNextSlot') : t('live.fmNextSlot')}
                 </div>
               </div>
             </div>
@@ -165,7 +171,7 @@ export default function Live() {
           <aside className="flex h-[560px] flex-col rounded-2xl border border-slate-200 bg-white shadow-card lg:h-auto">
             <div className="flex items-center justify-between border-b border-slate-200 px-4 py-3">
               <h2 className="font-display text-sm font-black uppercase tracking-widest">
-                Chat en direct
+                {t('live.chat.title')}
               </h2>
               <span className="flex items-center gap-1 text-xs text-slate-500">
                 <Users className="h-3.5 w-3.5" /> 2.3K
@@ -178,14 +184,14 @@ export default function Live() {
                     className="grid h-8 w-8 shrink-0 place-items-center rounded-full text-xs font-black text-white"
                     style={{ backgroundColor: m.color }}
                   >
-                    {m.user[0]}
+                    {authorOf(m)[0]}
                   </div>
                   <div className="min-w-0 flex-1">
                     <div className="flex items-baseline gap-2">
-                      <span className="text-sm font-bold">{m.user}</span>
+                      <span className="text-sm font-bold">{authorOf(m)}</span>
                       <span className="text-[10px] text-slate-500">{m.time}</span>
                     </div>
-                    <p className="text-sm text-slate-700">{m.msg}</p>
+                    <p className="text-sm text-slate-700">{textOf(m)}</p>
                   </div>
                 </div>
               ))}
@@ -194,13 +200,13 @@ export default function Live() {
               <input
                 value={draft}
                 onChange={(e) => setDraft(e.target.value)}
-                placeholder="Écrire un message…"
-                aria-label="Message du chat"
+                placeholder={t('live.chat.placeholder')}
+                aria-label={t('live.chat.inputLabel')}
                 className="flex-1 rounded-full border border-slate-200 bg-slate-100 px-4 py-2.5 text-sm outline-none focus:border-kolo-blue"
               />
               <button
                 type="submit"
-                aria-label="Envoyer"
+                aria-label={t('live.chat.send')}
                 className="grid h-10 w-10 place-items-center rounded-full bg-kolo-orange text-white transition-colors hover:bg-kolo-orange-hot"
               >
                 <Send className="h-4 w-4" />

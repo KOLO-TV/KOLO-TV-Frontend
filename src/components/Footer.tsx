@@ -1,19 +1,28 @@
 import { Link } from 'react-router-dom'
 import { Facebook, Instagram, Mail, MapPin, Phone, Youtube } from 'lucide-react'
+import { useLanguage } from '../i18n/LanguageContext'
+import type { TranslationKey } from '../i18n/translate'
 
-const PROGRAMS = [
-  { label: 'Ny Vaovao', to: '/emissions/ny-vaovao' },
-  { label: 'Le Journal', to: '/replay' },
-  { label: 'Magazines', to: '/replay' },
-  { label: 'Sport', to: '/replay' },
-  { label: 'Divertissement', to: '/replay' },
+const PROGRAMS: { labelKey: TranslationKey; to: string }[] = [
+  { labelKey: 'programs.nyVaovao', to: '/emissions/ny-vaovao' },
+  { labelKey: 'programs.journal', to: '/replay' },
+  { labelKey: 'programs.magazines', to: '/replay' },
+  { labelKey: 'programs.sport', to: '/replay' },
+  { labelKey: 'programs.entertainment', to: '/replay' },
 ]
 
-const ABOUT_LINKS = ['À propos', 'Nos équipes', 'Grille TV', 'Grille FM', 'Publicité']
+const ABOUT_LINKS: TranslationKey[] = [
+  'footer.about.about',
+  'footer.about.teams',
+  'footer.about.tvGuide',
+  'footer.about.fmGuide',
+  'footer.about.advertising',
+]
 
 const SOCIALS = [Facebook, Youtube, Instagram]
 
 export default function Footer() {
+  const { t } = useLanguage()
   return (
     <footer className="mt-24 bg-kolo-navy text-white">
       <div className="mx-auto max-w-7xl px-4 py-14 lg:px-8">
@@ -28,10 +37,10 @@ export default function Footer() {
               </div>
             </div>
             <p className="mt-4 text-sm italic text-white/80">
-              « Pour vous… Toujours pour vous… Rien que pour vous. »
+              {t('brand.slogan')}
             </p>
             <p className="mt-3 text-sm text-white/70">
-              Média malgache généraliste, culturel et informatif. La télé autrement.
+              {t('footer.description')}
             </p>
             <div className="mt-5 flex gap-2">
               {SOCIALS.map((Icon, i) => (
@@ -39,7 +48,7 @@ export default function Footer() {
                   key={i}
                   href="#"
                   className="grid h-10 w-10 place-items-center rounded-full bg-white/10 transition-colors hover:bg-kolo-orange"
-                  aria-label="Réseau social"
+                  aria-label={t('footer.social')}
                 >
                   <Icon className="h-4 w-4" />
                 </a>
@@ -49,13 +58,13 @@ export default function Footer() {
 
           <div>
             <h4 className="mb-4 text-xs font-bold uppercase tracking-widest text-kolo-orange">
-              Programmes
+              {t('footer.programsTitle')}
             </h4>
             <ul className="space-y-2 text-sm text-white/80">
               {PROGRAMS.map((p) => (
-                <li key={p.label}>
+                <li key={p.labelKey}>
                   <Link to={p.to} className="hover:text-white">
-                    {p.label}
+                    {t(p.labelKey)}
                   </Link>
                 </li>
               ))}
@@ -70,7 +79,7 @@ export default function Footer() {
               {ABOUT_LINKS.map((l) => (
                 <li key={l}>
                   <a href="#" className="hover:text-white">
-                    {l}
+                    {t(l)}
                   </a>
                 </li>
               ))}
@@ -79,7 +88,7 @@ export default function Footer() {
 
           <div>
             <h4 className="mb-4 text-xs font-bold uppercase tracking-widest text-kolo-orange">
-              Contact
+              {t('footer.contactTitle')}
             </h4>
             <ul className="space-y-3 text-sm text-white/80">
               <li className="flex items-start gap-2">
@@ -96,23 +105,23 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-2">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-kolo-orange" />
-                Antananarivo, Madagascar
+                {t('footer.location')}
               </li>
             </ul>
           </div>
         </div>
 
         <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 text-xs text-white/60 sm:flex-row">
-          <p>© {new Date().getFullYear()} KOLO TV/FM. Tous droits réservés.</p>
+          <p>{t('footer.copyright', { year: new Date().getFullYear() })}</p>
           <div className="flex gap-4">
             <a href="#" className="hover:text-white">
-              Mentions légales
+              {t('footer.legal')}
             </a>
             <a href="#" className="hover:text-white">
-              Confidentialité
+              {t('footer.privacy')}
             </a>
             <a href="#" className="hover:text-white">
-              CGU
+              {t('footer.terms')}
             </a>
           </div>
         </div>
