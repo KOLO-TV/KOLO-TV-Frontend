@@ -25,7 +25,7 @@ export default function Replay() {
     <SiteLayout>
       <section className="relative overflow-hidden bg-kolo-blue text-white">
         <div className="relative mx-auto max-w-7xl px-4 py-14 lg:px-8">
-          <span className="text-xs font-bold uppercase tracking-widest text-kolo-orange">
+          <span className="text-xs font-bold uppercase tracking-widest text-kolo-blue">
             {t('replay.eyebrow')}
           </span>
           <h1 className="mt-2 font-display text-4xl font-black tracking-tight sm:text-5xl">

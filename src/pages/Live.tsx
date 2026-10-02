@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from 'react'
-import { Play, Radio, Send, Tv, Users, Volume2 } from 'lucide-react'
+import { Play, RadioTower, Send, Tv, Users, Volume2 } from 'lucide-react'
 import SiteLayout from '../layouts/SiteLayout'
 import { images, initialChatMessages, type ChatMessage } from '../data/media'
 import { useLanguage } from '../i18n/LanguageContext'
@@ -15,6 +15,14 @@ export default function Live() {
   const [channel, setChannel] = useState<Channel>('tv')
   const [messages, setMessages] = useState<ChatMsg[]>(initialChatMessages)
   const [draft, setDraft] = useState('')
+
+  // Accents de l'univers affiché : bleu pour KOLO TV, orange pour KOLO FM.
+  const isTv = channel === 'tv'
+  const accentText = isTv ? 'text-kolo-blue' : 'text-kolo-navy'
+  const accentBar = isTv ? 'bg-kolo-blue' : 'bg-kolo-orange'
+  const accentButton = isTv
+    ? 'bg-kolo-blue text-white hover:bg-kolo-blue/80'
+    : 'bg-kolo-orange text-kolo-navy hover:bg-kolo-orange-hot'
 
   const authorOf = (m: ChatMsg) => ('own' in m ? t('live.chat.you') : m.user)
   const textOf = (m: ChatMsg) => ('own' in m ? m.msg : t(m.msgKey))
@@ -39,7 +47,7 @@ export default function Live() {
       <div className="mx-auto max-w-7xl px-4 py-6 lg:px-8 lg:py-10">
         <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
           <div>
-            <div className="flex items-center gap-2 text-kolo-orange">
+            <div className={`flex items-center gap-2 ${accentText}`}>
               <span className="relative flex items-center gap-2 rounded-full bg-kolo-live px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-white">
                 <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-white" /> {t('common.liveBadge')}
               </span>
@@ -62,10 +70,10 @@ export default function Live() {
             <button
               onClick={() => setChannel('fm')}
               className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-bold transition-colors ${
-                channel === 'fm' ? 'bg-kolo-orange text-white' : 'text-slate-600'
+                channel === 'fm' ? 'bg-kolo-orange text-kolo-navy' : 'text-slate-600'
               }`}
             >
-              <Radio className="h-4 w-4" /> KOLO FM
+              <RadioTower className="h-4 w-4" /> KOLO FM
             </button>
           </div>
         </div>
@@ -81,8 +89,8 @@ export default function Live() {
               ) : (
                 <div className="grid h-full w-full place-items-center bg-gradient-to-br from-kolo-blue via-kolo-blue-deep to-black">
                   <div className="text-center text-white">
-                    <div className="relative mx-auto grid h-28 w-28 place-items-center rounded-full bg-kolo-orange">
-                      <Radio className="h-12 w-12" />
+                    <div className="relative mx-auto grid h-28 w-28 place-items-center rounded-full bg-kolo-orange text-kolo-navy">
+                      <RadioTower className="h-12 w-12" />
                       <span className="absolute inset-0 animate-ping rounded-full bg-kolo-orange opacity-40" />
                     </div>
                     <p className="mt-6 text-xs font-bold uppercase tracking-widest text-white/70">
@@ -119,7 +127,7 @@ export default function Live() {
 
               {channel === 'tv' && (
                 <button className="absolute inset-0 grid place-items-center" aria-label={t('player.play')}>
-                  <span className="grid h-20 w-20 place-items-center rounded-full bg-kolo-orange text-white shadow-glow-orange transition-transform hover:scale-110">
+                  <span className={`grid h-20 w-20 place-items-center rounded-full shadow-card-hover transition-transform hover:scale-110 ${accentButton}`}>
                     <Play className="h-8 w-8 fill-current" />
                   </span>
                 </button>
@@ -132,7 +140,7 @@ export default function Live() {
                   </button>
                   <Volume2 className="h-5 w-5" />
                   <div className="h-1 flex-1 overflow-hidden rounded-full bg-white/25">
-                    <div className="h-full w-2/3 bg-kolo-orange" />
+                    <div className={`h-full w-2/3 ${accentBar}`} />
                   </div>
                   <span className="rounded bg-white/10 px-1.5 py-0.5 text-[10px] font-bold">
                     {channel === 'tv' ? '1080p' : '128 kbps'}
@@ -144,7 +152,7 @@ export default function Live() {
 
             <div className="mt-5 grid gap-3 sm:grid-cols-2">
               <div className="rounded-2xl border border-slate-200 bg-white p-4">
-                <div className="text-[11px] font-bold uppercase tracking-widest text-kolo-orange">
+                <div className={`text-[11px] font-bold uppercase tracking-widest ${accentText}`}>
                   {t('live.now')}
                 </div>
                 <div className="mt-1 font-display text-lg font-black">
@@ -207,7 +215,7 @@ export default function Live() {
               <button
                 type="submit"
                 aria-label={t('live.chat.send')}
-                className="grid h-10 w-10 place-items-center rounded-full bg-kolo-orange text-white transition-colors hover:bg-kolo-orange-hot"
+                className={`grid h-10 w-10 place-items-center rounded-full transition-colors ${accentButton}`}
               >
                 <Send className="h-4 w-4" />
               </button>

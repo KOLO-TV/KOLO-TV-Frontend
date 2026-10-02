@@ -39,7 +39,6 @@ const mg: Dictionary = {
     news: 'Vaovao',
     live: 'Mivantana',
     replay: 'Jereo indray',
-    radio: 'Radio',
     more: 'Hafa',
   },
 
@@ -112,18 +111,20 @@ const mg: Dictionary = {
   },
 
   home: {
-    hero: {
-      titleLead: 'TV',
-      titleAccent: 'hafa kely',
-      titleLine2: 'Ho anao hatrany.',
+    group: {
+      eyebrow: 'Orinasa haino aman-jery malagasy',
+      baseline: 'Fahitalavitra iray, radio iray, feo iray ho an’i Madagasikara.',
       intro:
-        'Arahi-maso ny vaovao, ny fandaharana manokana ary ny fanatanjahantena eto amin’ny Nosy Lehibe. Fahitalavitra malagasy akaiky ny vahoaka, manome kolontsaina sy fampahalalana.',
-      watchNow: 'Jereo izao',
-      seeReplay: 'Jereo indray',
-      viewers: 'Mpijery',
-      bilingual: 'Fiteny roa',
-      imageAlt: 'Vaovao mivantana',
-      videoTitle: 'NY VAOVAO — Ny vaovao eto Madagasikara androany',
+        'Mampiray antenne roa ny KOLO : ny KOLO TV, ilay TV hafa kely, sy ny KOLO FM, ilay radio mavitrika any amin’ny faritany. Fampahalalana, kolontsaina ary mozika, amin’ny teny frantsay sy malagasy.',
+      listenFm: 'Henoy ny KOLO FM',
+      watchTv: 'Jereo ny KOLO TV',
+      stats: {
+        audience: 'Mpanaraka isan’andro',
+        provinces: 'Faritany KOLO FM',
+        broadcast: 'Fandefasana TV & radio',
+      },
+      tvImageAlt: 'Studio KOLO TV',
+      fmImageAlt: 'Studio KOLO FM',
     },
     featured: {
       title: 'Nosongadinina',
@@ -133,13 +134,6 @@ const mg: Dictionary = {
       title: 'Ny Vaovao & Fandaharam-baovao',
       subtitle: 'Ireo fandefasana farany',
       cta: 'Jereo daholo',
-    },
-    promo: {
-      badge: 'Mivantana izao',
-      titleAccent: 'isan’andro, tsy misy tapaka',
-      text: 'Jereo mivantana ny fahitalavitra amin’ny finday na solosaina, henoy ny radio ary miaraha miresaka amin’ny fianakaviamben’ny KOLO.',
-      watchTv: 'Jereo ny TV',
-      listenFm: 'Henoy ny FM',
     },
     popular: {
       title: 'Malaza amin’ity herinandro ity',
@@ -157,6 +151,50 @@ const mg: Dictionary = {
       title: 'Ny mozika sy ny feon’i Madagasikara, tsy misy fiatoana.',
       text: 'Henoy avy hatrany amin’ny tranonkala ny KOLO FM, amin’ny finday na amin’ny podcast. Fandaharana ara-kolontsaina, adihevitra, mozika malagasy sy iraisam-pirenena.',
       listenLive: 'Henoy mivantana',
+    },
+  },
+
+  universe: {
+    label: 'Safidio ny tontolo KOLO',
+    radioTab: 'Radio — KOLO FM',
+    tvTab: 'Fahitalavitra — KOLO TV',
+  },
+
+  tv: {
+    eyebrow: 'Fahitalavitra',
+    intro: 'Ny mivantana, ny vaovao ary ny fandaharana manokana.',
+    quickAccess: 'Fidirana haingana',
+    nyVaovaoDesc: 'Ilay fandaharana lohalaharana, isan’andro',
+    replayDesc: 'Ny fandaharana rehetra, rehefa tianao',
+    showsDesc: 'Kolontsaina, fanatanjahantena ary mozika',
+  },
+
+  radio: {
+    eyebrow: 'Radio',
+    tagline: 'Ilay radio mavitrika',
+    chooseProvince: 'Safidio ny faritany misy anao',
+    frequencyTbc: 'Fréquence mbola hamarinina',
+    allProvinces: 'Ny faritany rehetra',
+    backToTab: 'Hiverina amin’ny pejy radio',
+    streamPending: 'Mbola amboarina ny fandefasana',
+    national: {
+      title: 'Ny fandefasana nasionaly KOLO FM',
+      text: 'Mbola tsy misy radio akaiky anao ? Henoy ny antenne nasionaly, 24 ora isan’andro.',
+    },
+    index: {
+      title: 'Ireo radio KOLO FM',
+      intro: 'Faritany enina, radio iray ihany. Safidio ny radio akaiky indrindra anao.',
+    },
+    province: {
+      eyebrow: 'Radio an-toerana',
+      schedule: 'Fandaharam-potoana',
+      scheduleEmpty: 'Havoaka tsy ho ela ny fandaharam-potoanan’ity radio ity.',
+      hosts: 'Ireo mpanentana',
+      hostsEmpty: 'Hambara tsy ho ela ireo mpanentana ao amin’ity radio ity.',
+      contact: 'Fifandraisana an-toerana',
+      contactEmpty:
+        'Mbola ho avy ny fifandraisana an-toerana. Mandra-pahatongan’izay, soraty any amin’ny adiresin’ny orinasa.',
+      otherStations: 'Ireo radio hafa',
     },
   },
 
