@@ -45,14 +45,14 @@ export default function EmissionDetail() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
               <button aria-label={t('player.play')} className="absolute inset-0 grid place-items-center">
-                <span className="grid h-20 w-20 place-items-center rounded-full bg-kolo-orange text-white shadow-glow-orange transition-transform hover:scale-110">
+                <span className="grid h-20 w-20 place-items-center rounded-full bg-kolo-blue text-white shadow-card-hover transition-transform hover:scale-110">
                   <Play className="h-8 w-8 fill-current" />
                 </span>
               </button>
               <div className="absolute inset-x-0 bottom-0 p-4">
                 <div className="mb-2 flex h-1 items-center overflow-hidden rounded-full bg-white/25">
-                  <div className="h-full w-1/3 bg-kolo-orange" />
-                  <span className="ml-[-6px] h-3 w-3 rounded-full bg-kolo-orange ring-2 ring-white" />
+                  <div className="h-full w-1/3 bg-kolo-blue" />
+                  <span className="ml-[-6px] h-3 w-3 rounded-full bg-kolo-blue ring-2 ring-white" />
                 </div>
                 <div className="flex items-center gap-3 text-white">
                   <button aria-label={t('player.pause')}>
@@ -77,7 +77,7 @@ export default function EmissionDetail() {
             </div>
 
             <div className="mt-6">
-              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-kolo-orange">
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-kolo-blue">
                 {t('emission.flagship')}
               </div>
               <h1 className="mt-2 font-display text-3xl font-black leading-tight sm:text-4xl">
@@ -97,7 +97,7 @@ export default function EmissionDetail() {
                 {ACTIONS.map((action) => (
                   <button
                     key={action.label.key}
-                    className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-700 transition-colors hover:border-kolo-orange hover:text-kolo-orange"
+                    className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-700 transition-colors hover:border-kolo-blue hover:text-kolo-blue"
                   >
                     <action.icon className="h-4 w-4" /> {t(action.label.key, action.label.params)}
                   </button>
@@ -150,7 +150,7 @@ export default function EmissionDetail() {
                         <img src={ep.image} alt="" loading="lazy" className="h-full w-full object-cover" />
                         {ep.current && (
                           <span className="absolute inset-0 grid place-items-center bg-black/50">
-                            <span className="rounded-full bg-kolo-orange px-2 py-0.5 text-[9px] font-bold uppercase tracking-widest text-white">
+                            <span className="rounded-full bg-kolo-blue px-2 py-0.5 text-[9px] font-bold uppercase tracking-widest text-white">
                               {t('emission.nowPlaying')}
                             </span>
                           </span>

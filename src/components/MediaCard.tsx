@@ -53,7 +53,7 @@ export default function MediaCard({
             {duration}
           </span>
         )}
-        <div className="absolute bottom-3 left-3 grid h-11 w-11 translate-y-2 place-items-center rounded-full bg-kolo-orange text-white opacity-0 shadow-glow-orange transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+        <div className="absolute bottom-3 left-3 grid h-11 w-11 translate-y-2 place-items-center rounded-full bg-kolo-blue text-white opacity-0 shadow-card-hover transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
           <Play className="h-5 w-5 fill-current" />
         </div>
       </div>

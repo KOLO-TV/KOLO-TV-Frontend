@@ -9,6 +9,7 @@ const PROGRAMS: { labelKey: TranslationKey; to: string }[] = [
   { labelKey: 'programs.magazines', to: '/replay' },
   { labelKey: 'programs.sport', to: '/replay' },
   { labelKey: 'programs.entertainment', to: '/replay' },
+  { labelKey: 'radio.allProvinces', to: '/radio' },
 ]
 
 const ABOUT_LINKS: TranslationKey[] = [
@@ -29,10 +30,13 @@ export default function Footer() {
         <div className="grid gap-10 lg:grid-cols-4">
           <div>
             <div className="flex items-center gap-2">
-              <div className="flex h-11 items-center rounded-lg bg-white px-3">
+              <div className="flex h-11 items-center gap-2 rounded-lg bg-white px-3">
                 <span className="font-display text-xl font-black text-kolo-blue">KOLO</span>
-                <span className="ml-1 rounded-sm bg-kolo-blue px-1 py-0.5 text-[10px] font-black text-white">
+                <span className="rounded-sm bg-kolo-blue px-1 py-0.5 text-[10px] font-black text-white">
                   TV
+                </span>
+                <span className="rounded-sm bg-kolo-orange px-1 py-0.5 text-[10px] font-black text-kolo-navy">
+                  FM
                 </span>
               </div>
             </div>

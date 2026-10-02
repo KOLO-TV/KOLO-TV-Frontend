@@ -15,7 +15,7 @@ export default function Section({ title, subtitle, icon, cta, children }: Props)
     <section className="mx-auto max-w-7xl px-4 py-12 lg:px-8 lg:py-16">
       <div className="mb-8 flex items-end justify-between gap-4">
         <div>
-          <div className="flex items-center gap-2 text-kolo-orange">
+          <div className="flex items-center gap-2 text-kolo-blue">
             {icon}
             {subtitle && (
               <span className="text-xs font-bold uppercase tracking-widest">{subtitle}</span>
@@ -28,7 +28,7 @@ export default function Section({ title, subtitle, icon, cta, children }: Props)
         {cta && (
           <Link
             to={cta.to}
-            className="hidden shrink-0 items-center gap-1 text-sm font-bold text-kolo-blue transition-colors hover:text-kolo-orange sm:inline-flex"
+            className="hidden shrink-0 items-center gap-1 text-sm font-bold text-kolo-blue transition-colors hover:text-kolo-navy sm:inline-flex"
           >
             {cta.label}
             <ChevronRight className="h-4 w-4" />

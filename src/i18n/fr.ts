@@ -30,9 +30,8 @@ const fr = {
   nav: {
     home: 'Accueil',
     news: 'Actualités',
-    live: 'Live',
+    live: 'Direct',
     replay: 'Replay',
-    radio: 'Radio',
     more: 'Plus',
   },
 
@@ -105,18 +104,21 @@ const fr = {
   },
 
   home: {
-    hero: {
-      titleLead: 'La télé',
-      titleAccent: 'autrement',
-      titleLine2: 'Toujours pour vous.',
+    // Hero « KOLO, le groupe » : l'entreprise d'abord, ses deux antennes ensuite.
+    group: {
+      eyebrow: 'Groupe média malgache',
+      baseline: 'Une télé, une radio, une même voix pour Madagascar.',
       intro:
-        'Suivez le Journal, les magazines et le sport de la Grande Île. Une chaîne malgache proche du public, culturelle et informative.',
-      watchNow: 'Regarder maintenant',
-      seeReplay: 'Voir le Replay',
-      viewers: 'Téléspectateurs',
-      bilingual: 'Bilingue',
-      imageAlt: 'Journal en direct',
-      videoTitle: "NY VAOVAO — Aujourd'hui, l'actualité de Madagascar",
+        'KOLO réunit deux antennes : KOLO TV, la télé autrement, et KOLO FM, la radio dynamique présente en province. Information, culture et musique, en français et en malagasy.',
+      listenFm: 'Écouter KOLO FM',
+      watchTv: 'Regarder KOLO TV',
+      stats: {
+        audience: 'Audience quotidienne',
+        provinces: 'Provinces KOLO FM',
+        broadcast: 'Antenne TV & radio',
+      },
+      tvImageAlt: 'Plateau de KOLO TV',
+      fmImageAlt: 'Studio de KOLO FM',
     },
     featured: {
       title: 'À la une',
@@ -126,13 +128,6 @@ const fr = {
       title: 'Ny Vaovao & Journaux',
       subtitle: 'Les dernières éditions',
       cta: 'Tout voir',
-    },
-    promo: {
-      badge: 'En direct maintenant',
-      titleAccent: 'tous les jours, sans coupure',
-      text: 'Regardez la chaîne en direct sur mobile ou desktop, écoutez la radio et rejoignez le chat de la communauté KOLO.',
-      watchTv: 'Regarder TV',
-      listenFm: 'Écouter FM',
     },
     popular: {
       title: 'Populaire cette semaine',
@@ -150,6 +145,50 @@ const fr = {
       title: 'La musique et les voix de Madagascar, non-stop.',
       text: 'Écoutez KOLO FM directement dans votre navigateur, sur mobile ou en podcast. Émissions culturelles, débats, musique malgache et internationale.',
       listenLive: 'Écouter en direct',
+    },
+  },
+
+  // Bloc à onglets de la home : bascule entre les deux univers.
+  universe: {
+    label: 'Choisir un univers KOLO',
+    radioTab: 'Radio — KOLO FM',
+    tvTab: 'Télé — KOLO TV',
+  },
+
+  tv: {
+    eyebrow: 'Télé',
+    intro: 'Le direct, les journaux et les magazines de la chaîne.',
+    quickAccess: 'Accès rapide',
+    nyVaovaoDesc: "L'émission phare, chaque jour",
+    replayDesc: 'Toutes les émissions à la demande',
+    showsDesc: 'Culture, sport et musique',
+  },
+
+  radio: {
+    eyebrow: 'Radio',
+    tagline: 'La radio dynamique',
+    chooseProvince: 'Choisissez votre province',
+    frequencyTbc: 'Fréquence à confirmer',
+    allProvinces: 'Toutes les provinces',
+    backToTab: "Retour à l'accueil radio",
+    streamPending: 'Flux en cours de configuration',
+    national: {
+      title: 'Le direct national KOLO FM',
+      text: "Pas encore de station près de chez vous ? Écoutez l'antenne nationale, 24h/24.",
+    },
+    index: {
+      title: 'Les stations KOLO FM',
+      intro: 'Six provinces, une même radio. Choisissez la station la plus proche de chez vous.',
+    },
+    province: {
+      eyebrow: 'Station locale',
+      schedule: 'Grille des programmes',
+      scheduleEmpty: 'La grille de cette station sera publiée prochainement.',
+      hosts: 'Les animateurs',
+      hostsEmpty: 'Les animateurs de la station seront annoncés prochainement.',
+      contact: 'Contact local',
+      contactEmpty: "Coordonnées locales à venir. En attendant, écrivez-nous à l'adresse du groupe.",
+      otherStations: 'Les autres stations',
     },
   },
 

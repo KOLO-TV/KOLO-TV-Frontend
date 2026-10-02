@@ -14,7 +14,7 @@ export default function NotFound() {
         </p>
         <Link
           to="/"
-          className="mt-6 inline-flex items-center gap-2 rounded-full bg-kolo-orange px-6 py-3 text-sm font-bold text-white transition-all hover:scale-105 hover:bg-kolo-orange-hot"
+          className="mt-6 inline-flex items-center gap-2 rounded-full bg-kolo-blue px-6 py-3 text-sm font-bold text-white transition-all hover:scale-105 hover:bg-kolo-blue/80"
         >
           {t('notFound.back')}
         </Link>
